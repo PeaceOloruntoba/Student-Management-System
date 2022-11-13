@@ -18,12 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-
-Route::controller(StdentController::class)->group({
-    Route::get('/','index');
-    Route::get('/edit/{id}','edit');
-    Route::get('/create','create');
-    Route::get('/show{id}','show');
-    Route::get('/store{id}','store');
-    Route::get('/uodate/{id}','update');
-});
+Route::get('/', "StudentController@index");
+Route::get('/edit{id}', "StudentController@edit");
+Route::get('/show{id}', "StudentController@show");
+Route::get('/create', "StudentController@create");
+Route::get('/store', "StudentController@store");
+Route::get('/update{id}', "StudentController@update");

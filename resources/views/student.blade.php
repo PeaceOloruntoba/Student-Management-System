@@ -74,11 +74,11 @@
                      @csrf
                     <div class="form-group">
                         <label>Matric No</label>
-                        <input name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
+                        <input value="{{ $student->firstName }}" name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
                      </div>
                      <div class="form-group">
                         <label>First Name</label>
-                        <input name="firstName" type="text" class="form-control" placeholder="Enter First Name">
+                        <input value="{{ $student-> }}" name="firstName" type="text" class="form-control" placeholder="Enter First Name">
                      </div>
                      <div class="form-group">
                         <label>Last Name</label>

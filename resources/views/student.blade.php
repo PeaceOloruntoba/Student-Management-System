@@ -7,55 +7,74 @@
 
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+   <link rel="stylesheet" type="text/css" href="../css/style.css">
    <title>Students Management System</title>
    </head>
    <body>
+      @include("navbar")
+
+         <div class="row header-container justify-content-center">
+            <div class="header">
+               <h1>Student Management System</h1>
+            </div>
+         </div>
+
       @if($layout == 'index')
-         <div class="container-fluid">
+         <div class="container-fluid mt-4">
             <div class="row">
                <section class="col">
                   @include("studentslist")
                </section>
-               <section class="col"></section>
+               <section class="col-md-5"></section>
             </div>
          </div>
       @elseif($layout == 'create')
-         <div class="container-fluid">
+         <div class="container-fluid mt-4">
             <div class="row">
-               <section class="col">
+               <section class="col-md-7">
                   @include("studentslist")
                </section>
-               <section class="col">
-                  <form action="{{ url('/store') }}" method="post">
+               <section class="col-md-5">
+
+                  <div class="card mb-3">
+                    <img src="..." class="card-img-top" alt="https://media.istockphoto.com/id/1153190902/vector/online-exam-online-form-survey-on-screen-monitor-with-set-elements-knowledge-icons-e.jpg?s=612x612&w=is&k=20&c=Fluu5ecyD31s3IzNsvKhoMbHOnSroIQuDT1MOVNgHlM=">
+                    <div class="card-body">
+                        <h5 class="card-title">Enter the information of the new student.</h5>
+
+                        <form action="{{ url('/store') }}" method="post">
                      @csrf
-                    <div class="form-group">
-                        <label>Matric No</label>
-                        <input name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
-                     </div>
-                     <div class="form-group">
-                        <label>First Name</label>
-                        <input name="firstName" type="text" class="form-control" placeholder="Enter First Name">
-                     </div>
-                     <div class="form-group">
-                        <label>Last Name</label>
-                        <input name="secondName" type="text" class="form-control" placeholder="Enter Lats Name">
+                          <div class="form-group">
+                              <label>Matric No</label>
+                              <input name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
+                           </div>
+                           <div class="form-group">
+                              <label>First Name</label>
+                              <input name="firstName" type="text" class="form-control" placeholder="Enter First Name">
+                           </div>
+                           <div class="form-group">
+                              <label>Last Name</label>
+                              <input name="secondName" type="text" class="form-control" placeholder="Enter Lats Name">
+                          </div>
+                          <div class="form-group">
+                              <label>Age</label>
+                              <input name="age" type="text" class="form-control" placeholder="Enter Age">
+                          </div>
+                          <div class="form-group">
+                              <label>Speciality</label>
+                              <input name="speciality" type="text" class="form-control" placeholder="Enter Programme">
+                          </div>
+                          <input type="submit" class="btn btn-info" value="Save">
+                          <input type="reset" class="btn btn-warning" value="Reset">
+                        </form>
+
                     </div>
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input name="age" type="text" class="form-control" placeholder="Enter Age">
-                    </div>
-                    <div class="form-group">
-                        <label>Speciality</label>
-                        <input name="speciality" type="text" class="form-control" placeholder="Enter Programme">
-                    </div>
-                    <input type="submit" class="btn btn-info" value="Save">
-                    <input type="reset" class="btn btn-warning" value="Reset">
-                  </form>
+                  </div>
+
+                  
                </section>
             </div>
       @elseif($layout == 'show')
-         <div class="container-fluid">
+         <div class="container-fluid mt-4">
             <div class="row">
                <section class="col">
                   @include("studentslist")
@@ -64,43 +83,49 @@
             </div>
          </div>
       @elseif($layout == 'edit')
-         <div class="container-fluid">
+         <div class="container-fluid mt-4">
             <div class="row">
-               <section class="col">
+               <section class="col-md-7">
                   @include("studentslist")
                </section>
-               <section class="col">
-                  <form action="{{ url('/update/'.$student->id) }}" method="post">
-                     @csrf
-                    <div class="form-group">
-                        <label>Matric No</label>
-                        <input value="{{ $student->firstName }}" name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
-                     </div>
-                     <div class="form-group">
-                        <label>First Name</label>
-                        <input value="{{ $student-> }}" name="firstName" type="text" class="form-control" placeholder="Enter First Name">
-                     </div>
-                     <div class="form-group">
-                        <label>Last Name</label>
-                        <input name="secondName" type="text" class="form-control" placeholder="Enter Lats Name">
+               <section class="col-md-5">
+                  <div class="card mb-3">
+                    <img src="..." class="card-img-top" alt="https://media.istockphoto.com/id/1153190902/vector/online-exam-online-form-survey-on-screen-monitor-with-set-elements-knowledge-icons-e.jpg?s=612x612&w=is&k=20&c=Fluu5ecyD31s3IzNsvKhoMbHOnSroIQuDT1MOVNgHlM=">
+                    <div class="card-body">
+                        <h5 class="card-title">Update student's information.</h5>
+                        <form action="{{ url('/update/'.$student->id) }}" method="post">
+                           @csrf
+                          <div class="form-group">
+                              <label>Matric No</label>
+                              <input value="{{ $student->mat_no }}" name="mat_no" type="text" class="form-control" placeholder="Enter Matric No">
+                           </div>
+                           <div class="form-group">
+                              <label>First Name</label>
+                              <input value="{{ $student->firstName }}" name="firstName" type="text" class="form-control" placeholder="Enter First Name">
+                           </div>
+                           <div class="form-group">
+                              <label>Last Name</label>
+                              <input value="{{ $student->secondName }}" name="secondName" type="text" class="form-control" placeholder="Enter Last Name">
+                          </div>
+                          <div class="form-group">
+                              <label>Age</label>
+                              <input value="{{ $student->age }}" name="age" type="text" class="form-control" placeholder="Enter Age">
+                          </div>
+                          <div class="form-group">
+                              <label>Speciality</label>
+                              <input value="{{ $student->speciality }}" name="speciality" type="text" class="form-control" placeholder="Enter Programme">
+                          </div>
+                          <input type="submit" class="btn btn-info" value="Update">
+                          <input type="reset" class="btn btn-warning" value="Reset">
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input name="age" type="text" class="form-control" placeholder="Enter Age">
-                    </div>
-                    <div class="form-group">
-                        <label>Speciality</label>
-                        <input name="speciality" type="text" class="form-control" placeholder="Enter Programme">
-                    </div>
-                    <input type="submit" class="btn btn-info" value="Save">
-                    <input type="reset" class="btn btn-warning" value="Reset">
-                  </form>
+                  </div>
                </section>
             </div>
          </div>
       @endif
 
-
+      <footer></footer>
 
       <!-- Optional JavaScript; choose one of the two! -->
 
